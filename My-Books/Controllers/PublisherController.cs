@@ -1,0 +1,95 @@
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using My_Books.Data.Services;
+using My_Books.Data.ViewModel;
+
+namespace My_Books.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class PublisherController : ControllerBase
+    {
+        private readonly PublisherServices _publisherServices;
+
+        public PublisherController(PublisherServices publisherServices)
+        {
+            _publisherServices = publisherServices;
+        }
+
+        [HttpPost("Add_ publisher")]
+
+        public IActionResult AddPubliser([FromBody] PublisherVM PublisherVM)
+        {
+            try
+            {
+                var newPubisher = _publisherServices.AddPublisher(PublisherVM);
+                return Created(nameof(AddPubliser), newPubisher);
+            }
+            catch (PublisherException.PublisherException ex)
+
+            {
+                return BadRequest($"{ex.Message}, publisher Name : {ex.PubisherName}");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [HttpGet("Get-publisher-book-with-Authors/{id}")]
+        public IActionResult GetPubliser(int id)
+        {
+            var result = _publisherServices.GetPublisherWithBookandAuthors(id);
+            return Ok(result);
+        }
+        [HttpGet("Get-publisher-By-Id/{id}")]
+        public IActionResult GetPubliserById(int id)
+        {
+            throw new Exception("This is the exception that is handeled by MiddeleWare ");
+            try
+            {
+               // throw new Exception("This is the exception that is handeled by MiddeleWare ");
+                var result = _publisherServices.GetPublisherById(id);
+                if (result != null)
+                {
+                    return Ok(result);
+                }
+                return NotFound();
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [HttpDelete("Delete-Publisher-By-id/{id}")]
+
+        public IActionResult DeletePublisherId(int id)
+        {
+
+            try
+            {
+
+                
+
+                var _responce = _publisherServices.DeletePublisherById(id);
+                if (_responce != null)
+                {
+                    return Ok(_responce);
+                }
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+
+        }
+    }
+}

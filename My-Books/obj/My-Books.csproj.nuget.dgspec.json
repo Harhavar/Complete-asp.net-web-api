@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\source\\repos\\Harhavar\\Complete-asp.net-web-api\\My-Books\\My-Books.csproj": {}
+    "C:\\Users\\HP\\Source\\Repos\\Harhavar\\Complete-asp.net-web-api\\My-Books\\My-Books.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\source\\repos\\Harhavar\\Complete-asp.net-web-api\\My-Books\\My-Books.csproj": {
+    "C:\\Users\\HP\\Source\\Repos\\Harhavar\\Complete-asp.net-web-api\\My-Books\\My-Books.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\Harhavar\\Complete-asp.net-web-api\\My-Books\\My-Books.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Source\\Repos\\Harhavar\\Complete-asp.net-web-api\\My-Books\\My-Books.csproj",
         "projectName": "My-Books",
-        "projectPath": "C:\\Users\\HP\\source\\repos\\Harhavar\\Complete-asp.net-web-api\\My-Books\\My-Books.csproj",
+        "projectPath": "C:\\Users\\HP\\Source\\Repos\\Harhavar\\Complete-asp.net-web-api\\My-Books\\My-Books.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\source\\repos\\Harhavar\\Complete-asp.net-web-api\\My-Books\\obj\\",
+        "outputPath": "C:\\Users\\HP\\Source\\Repos\\Harhavar\\Complete-asp.net-web-api\\My-Books\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,6 +53,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.0-preview.1.23111.4, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

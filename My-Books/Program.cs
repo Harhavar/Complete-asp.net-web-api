@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using My_Books.Data;
 using My_Books.Data.Services;
+using My_Books.PublisherException;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddTransient<BookServices>();
+
+builder.Services.AddTransient<AuthorServices>();
+builder.Services.AddTransient<PublisherServices>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -34,6 +39,10 @@ AppDbInitializer.Seed(app);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+//exception handling in middleware 
+app.ConfigureBuiltinExceptionHandler();
+//app.ConfigureCustomExceotionHandler();
 
 app.MapControllers();
 

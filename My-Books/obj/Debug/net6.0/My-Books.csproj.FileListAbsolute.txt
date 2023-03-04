@@ -85,3 +85,4 @@ C:\Users\HP\Source\Repos\Harhavar\Complete-asp.net-web-api\My-Books\bin\Debug\ne
 C:\Users\HP\Source\Repos\Harhavar\Complete-asp.net-web-api\My-Books\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\HP\Source\Repos\Harhavar\Complete-asp.net-web-api\My-Books\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\HP\Source\Repos\Harhavar\Complete-asp.net-web-api\My-Books\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\HP\Source\Repos\Harhavar\Complete-asp.net-web-api\My-Books\bin\Debug\net6.0\Newtonsoft.Json.dll
