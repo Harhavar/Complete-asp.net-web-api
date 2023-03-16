@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using My_Books.ActionResult;
+using My_Books.Data.Models;
 using My_Books.Data.Services;
 using My_Books.Data.ViewModel;
 
@@ -14,6 +16,22 @@ namespace My_Books.Controllers
         public PublisherController(PublisherServices publisherServices)
         {
             _publisherServices = publisherServices;
+        }
+
+        [HttpGet("Get-All-Publisher")]
+        public IActionResult GetAllPublisher(string sortBy , string SearchString , int PageNumber)
+        {
+            
+            try
+            {
+                var _result = _publisherServices.GetAllPublisher(sortBy,  SearchString , PageNumber);
+                return Ok(_result);
+            }
+            catch (Exception ex)
+            {
+                return Ok(ex.Message);
+            }
+
         }
 
         [HttpPost("Add_ publisher")]
@@ -47,21 +65,38 @@ namespace My_Books.Controllers
         [HttpGet("Get-publisher-By-Id/{id}")]
         public IActionResult GetPubliserById(int id)
         {
-            throw new Exception("This is the exception that is handeled by MiddeleWare ");
+            //throw new Exception("This is the exception that is handeled by MiddeleWare ");
             try
             {
-               // throw new Exception("This is the exception that is handeled by MiddeleWare ");
+                // throw new Exception("This is the exception that is handeled by MiddeleWare ");
                 var result = _publisherServices.GetPublisherById(id);
                 if (result != null)
                 {
                     return Ok(result);
+                    //var _ResponceObj = new CustomActionResultVM()
+                    //{
+                    //    Publisher = result
+                    //};
+                    //return new CustomActionResult(_ResponceObj);
+                    // return result;
                 }
-                return NotFound();
+                else
+                {
+                    //var _responceobj = new CustomActionResultVM()
+                    //{
+                    //    Exception = new Exception
+                    //    ("this is comming from publisher controller")
+                    //};
+                    //return null;
+                    return NotFound();
+                }
+
+                //return null;
 
             }
             catch (Exception ex)
             {
-
+                //throw;
                 return BadRequest(ex.Message);
             }
 
@@ -75,7 +110,7 @@ namespace My_Books.Controllers
             try
             {
 
-                
+
 
                 var _responce = _publisherServices.DeletePublisherById(id);
                 if (_responce != null)

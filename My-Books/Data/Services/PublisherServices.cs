@@ -1,4 +1,5 @@
 ﻿using My_Books.Data.Models;
+using My_Books.Data.Paging;
 using My_Books.Data.ViewModel;
 using System.Text.RegularExpressions;
 
@@ -65,6 +66,42 @@ namespace My_Books.Data.Services
             //Optimized
             return Regex.IsMatch(name, @"^\d");
         }
+
+        public object GetAllPublisher(string sortBy , string SearchString , int? PageNumber)
+        {
+           var AllPublisher = _dbContext.Publishers.OrderBy(n => n.Name).ToList();
+
+            if (!string.IsNullOrEmpty(sortBy))
+            {
+                switch (sortBy)
+
+                {
+                    case "Name_desc":
+                        AllPublisher = AllPublisher.OrderByDescending(n => n.Name).ToList();
+                        break;
+                    case "Name_Ass":
+                        AllPublisher = AllPublisher.OrderBy(n => n.Name).ToList();
+                        break;
+
+
+                    default:
+                        break;
+                }
+                return AllPublisher;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                AllPublisher = AllPublisher.Where(n => n.Name.Contains(SearchString, StringComparison.CurrentCultureIgnoreCase) ).ToList();
+                return AllPublisher;
+            }
+
+            //paging
+            int pageSize = 5;
+            AllPublisher = PaginatedList<Publisher>.Create(AllPublisher.AsQueryable(), PageNumber ?? 1 , pageSize);
+
+            return null;
+        }
+        
     }
 }
 
